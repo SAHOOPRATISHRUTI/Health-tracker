@@ -28,6 +28,25 @@ const loginUser = async (req,res)=>{
    
 
 
+const requestOTP = async (req, res) => {
+    try {
+        await userService.requestOTP(req.body.email);
+        return Response.successResponse(req, res, null, messages.otpSent, 200);
+    } catch (error) {
+        return Response.errorResponse(req, res, error);
+    }
+};
+
+const verifyOTP = async (req, res) => {
+    try {
+        const result = await userService.verifyOTP(req.body);
+        return Response.successResponse(req, res, result, messages.otpVerified, 200);
+    } catch (error) {
+        return Response.errorResponse(req, res, error);
+    }
+};
+
+
 
 
 
@@ -37,4 +56,6 @@ const loginUser = async (req,res)=>{
 module.exports={
     registerUser,
     loginUser,
+    requestOTP,
+    verifyOTP
 }

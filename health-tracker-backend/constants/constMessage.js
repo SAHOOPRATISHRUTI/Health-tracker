@@ -9,4 +9,8 @@ module.exports = {
     registrationError:'Registering  User Error',
     loginUserError:'logging User error',
     invaildCredentials:'Invinvaild User',
+    otpRequesterror:'Otp Request Error',
+    userNotFound:'User Not Found',
+    otpInvalidOrExpired:'Otp expired',
+    otpVerificationError:'Otp Verification Error'
 };
