@@ -12,5 +12,17 @@ module.exports = {
     otpRequesterror:'Otp Request Error',
     userNotFound:'User Not Found',
     otpInvalidOrExpired:'Otp expired',
-    otpVerificationError:'Otp Verification Error'
+    logHealthMetric :'Error logging health metric',
+    metricLogged:'Metric logged sucess',
+    otpVerificationError:'Otp Verification Error',
+    fetchHealthLogs: "Error fetching health logs.",
+    healthLogFetched: "Health log fetched successfully.",
+    healthLogsFetched: "Health logs fetched successfully.",
+    healthLogNotFound: "Health log not found.",
+    updateHealthLog: "Error updating health log.",
+    healthLogUpdated: "Health log updated successfully.",
+    deleteHealthLog: "Error deleting health log.",
+    healthLogDeleted: "Health log deleted successfully.",
+    fetchHealthLogsId:"Fetching error log by Id",
+    healthLogFetchedId:"Health log fetched successfully by Id",
 };
