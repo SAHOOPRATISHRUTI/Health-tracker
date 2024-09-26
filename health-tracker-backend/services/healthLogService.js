@@ -1,10 +1,9 @@
-const HealthLog = require('../models/healthLogModel')
-const messages=require('../constants/constMessage')
-
+const mongoose = require('mongoose');
+const HealthLog = require('../models/healthLogModel');
+const messages = require('../constants/constMessage');
 
 const logHealthMetric = async (data, userId) => {
     try {
-        // Ensure userId is passed
         const healthLog = new HealthLog({ ...data, userId });
         await healthLog.save();
         return healthLog;
@@ -16,29 +15,29 @@ const logHealthMetric = async (data, userId) => {
 
 const getHealthLogs = async () => {
     try {
-        return await HealthLog.find().sort({ createdAt: -1 }); // Return all health logs
+        return await HealthLog.find().sort({ createdAt: -1 });
     } catch (error) {
         console.error('Error fetching health logs', error);
         throw new Error(messages.fetchHealthLogs);
     }
 };
 
-const getHealthLogsById = async (userId) => {
+const getHealthLogsById = async (logId) => {
     try {
-        const healthLog = await HealthLog.findById(userId); // Fetch a health log by ID
+        const healthLog = await HealthLog.findById(logId);
         if (!healthLog) {
             throw new Error(messages.healthLogNotFound);
         }
-        return healthLog; // Return the specific health log
+        return healthLog;
     } catch (error) {
-        console.error('Error Fetching health log By ID', error);
+        console.error('Error fetching health log by ID', error);
         throw new Error(messages.fetchHealthLogsId);
     }
 };
 
-const updateHealthLog = async (userId, data) => {
+const updateHealthLog = async (logId, data) => {
     try {
-        const updatedHealthLog = await HealthLog.findByIdAndUpdate(userId, data, { new: true });
+        const updatedHealthLog = await HealthLog.findByIdAndUpdate(logId, data, { new: true });
         if (!updatedHealthLog) {
             throw new Error(messages.healthLogNotFound);
         }
@@ -49,9 +48,9 @@ const updateHealthLog = async (userId, data) => {
     }
 };
 
-const deleteHealthLog = async (userId) => {
+const deleteHealthLog = async (logId) => {
     try {
-        const deletedHealthLog = await HealthLog.findByIdAndDelete(userId);
+        const deletedHealthLog = await HealthLog.findByIdAndDelete(logId);
         if (!deletedHealthLog) {
             throw new Error(messages.healthLogNotFound);
         }
@@ -60,9 +59,7 @@ const deleteHealthLog = async (userId) => {
         console.error('Error deleting health log', error);
         throw new Error(messages.deleteHealthLog);
     }
-}
-
-
+};
 
 module.exports = {
     logHealthMetric,

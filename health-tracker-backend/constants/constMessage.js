@@ -25,4 +25,5 @@ module.exports = {
     healthLogDeleted: "Health log deleted successfully.",
     fetchHealthLogsId:"Fetching error log by Id",
     healthLogFetchedId:"Health log fetched successfully by Id",
+    createdGoalError:"Error created Goal Error"
 };
